@@ -7,7 +7,7 @@ This also downloads the GPG armor files of the packages to verify them.
 Getting the packages
 --------------------
 
-* Add it to your local manifest:
+* Add this to your local manifest:
 
       <?xml version="1.0" encoding="UTF-8"?>
       <manifest>
@@ -17,8 +17,10 @@ Getting the packages
                    remote="github"
                    revision="master" />
       </manifest>
+      
+* Sync the sources.
 
-* After downloading to to the vendor dir and get the packages:
+* After downloading go to the vendor dir and get the packages:
 
       cd vendor/fdroid
       ./get_packages.sh
