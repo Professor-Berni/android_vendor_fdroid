@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017-2020 The LineageOS Project
+# Copyright (C) 2017-2024 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -478,6 +478,39 @@ function write_blueprint_packages() {
             for ARG in "${ARGS[@]}"; do
                 if [ "$ARG" = "PRESIGNED" ]; then
                     USE_PLATFORM_CERTIFICATE="false"
+                    printf '\tpresigned: true,\n'
+# Beginning with Android 14 (U), some presigned apps must be preprocessed too
+# according to this error message:
+#
+# vendor/fdroid/proprietary/app/AuroraStore.apk: Prebuilt, presigned apks with
+# targetSdkVersion >= 30 (or a codename targetSdkVersion) must set preprocessed: true
+# in the Android.bp definition (because they must be signed with signature v2, and
+# the build system would wreck that signature otherwise)
+#
+# For this, the mentioned app should be marked as "PRESIGNED_PREPROCESSED" in
+# fdroid/repo/fdroid.txt:
+#
+# -app/com.aurora.store_56.apk:app/AuroraStore.apk;PRESIGNED_PREPROCESSED
+#
+# After that, re-run "get_packages.sh" in fdroid root folder.
+#
+# This will lead to:
+# android_app_import {
+# 	name: "AuroraStore",
+# 	owner: "fdroid",
+# 	apk: "proprietary/app/AuroraStore.apk",
+# 	preprocessed: true,                          <---- This line!
+# 	presigned: true,
+# 	dex_preopt: {
+# 		enabled: false,
+# 	},
+# }
+# in Android.bp file.
+#
+# Bernhard Thoben 2024-04-03
+                elif [ "$ARG" = "PRESIGNED_PREPROCESSED" ]; then
+                    USE_PLATFORM_CERTIFICATE="false"
+                    printf '\tpreprocessed: true,\n'
                     printf '\tpresigned: true,\n'
                 elif [[ "$ARG" =~ "OVERRIDES" ]]; then
                     OVERRIDEPKG=${ARG#*=}

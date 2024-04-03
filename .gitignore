@@ -1,3 +1,4 @@
 Android.mk
+Android.bp
 fdroid-vendor.mk
 proprietary/

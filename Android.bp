@@ -9,6 +9,7 @@ android_app_import {
 	name: "AuroraStore",
 	owner: "fdroid",
 	apk: "proprietary/app/AuroraStore.apk",
+	preprocessed: true,
 	presigned: true,
 	dex_preopt: {
 		enabled: false,
