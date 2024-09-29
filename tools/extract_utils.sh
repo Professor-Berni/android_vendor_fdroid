@@ -508,10 +508,36 @@ function write_blueprint_packages() {
 # in Android.bp file.
 #
 # Bernhard Thoben 2024-04-03
+#
+# *****
+# 
+# This error message occurred with the latest version of AuroraStore:
+# “AuroraStore: Contains compressed JNI libraries”
+# and the build failed!
+# This error message can be suppressed with this switch:
+# “skip_preprocessed_apk_checks: true”
+#
+# This will lead to:
+# android_app_import {
+# 	name: "AuroraStore",
+# 	owner: "fdroid",
+# 	apk: "proprietary/app/AuroraStore.apk",
+# 	preprocessed: true,
+# 	presigned: true,
+# 	skip_preprocessed_apk_checks: true,          <---- This line!
+# 	dex_preopt: {
+# 		enabled: false,
+# 	},
+# }
+# in Android.bp file.
+#
+# Bernhard Thoben 2024-09-28
+#
                 elif [ "$ARG" = "PRESIGNED_PREPROCESSED" ]; then
                     USE_PLATFORM_CERTIFICATE="false"
                     printf '\tpreprocessed: true,\n'
                     printf '\tpresigned: true,\n'
+                    printf '\tskip_preprocessed_apk_checks: true,\n'
                 elif [[ "$ARG" =~ "OVERRIDES" ]]; then
                     OVERRIDEPKG=${ARG#*=}
                     OVERRIDEPKG=${OVERRIDEPKG//,/\", \"}

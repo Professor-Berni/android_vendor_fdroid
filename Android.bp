@@ -11,6 +11,7 @@ android_app_import {
 	apk: "proprietary/app/AuroraStore.apk",
 	preprocessed: true,
 	presigned: true,
+	skip_preprocessed_apk_checks: true,
 	dex_preopt: {
 		enabled: false,
 	},
@@ -20,16 +21,6 @@ android_app_import {
 	name: "F-Droid",
 	owner: "fdroid",
 	apk: "proprietary/app/F-Droid.apk",
-	presigned: true,
-	dex_preopt: {
-		enabled: false,
-	},
-}
-
-android_app_import {
-	name: "IchnaeaNlpBackend",
-	owner: "fdroid",
-	apk: "proprietary/app/IchnaeaNlpBackend.apk",
 	presigned: true,
 	dex_preopt: {
 		enabled: false,
