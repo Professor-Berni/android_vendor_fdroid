@@ -26,16 +26,6 @@ android_app_import {
 }
 
 android_app_import {
-	name: "IchnaeaNlpBackend",
-	owner: "fdroid",
-	apk: "proprietary/app/IchnaeaNlpBackend.apk",
-	presigned: true,
-	dex_preopt: {
-		enabled: false,
-	},
-}
-
-android_app_import {
 	name: "NominatimNlpBackend",
 	owner: "fdroid",
 	apk: "proprietary/app/NominatimNlpBackend.apk",
