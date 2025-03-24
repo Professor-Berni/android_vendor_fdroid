@@ -1,6 +1,6 @@
 # FDroid
 -app/org.fdroid.fdroid_1022050.apk:app/F-Droid.apk;PRESIGNED
--app/com.aurora.store_65.apk:app/AuroraStore.apk;PRESIGNED
+-app/com.aurora.store_66.apk:app/AuroraStore.apk;PRESIGNED
 -priv-app/org.fdroid.fdroid.privileged_2130.apk:priv-app/FDroidPrivilegedExtension.apk;PRESIGNED
 
 # UnifiedNlp Backends
