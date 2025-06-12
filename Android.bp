@@ -21,6 +21,7 @@ android_app_import {
 	name: "F-Droid",
 	owner: "fdroid",
 	apk: "proprietary/app/F-Droid.apk",
+	preprocessed: true,
 	presigned: true,
 	dex_preopt: {
 		enabled: false,

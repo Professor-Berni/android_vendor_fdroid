@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017-2024 The LineageOS Project
+# Copyright (C) 2017-2025 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -479,6 +479,7 @@ function write_blueprint_packages() {
                 if [ "$ARG" = "PRESIGNED" ]; then
                     USE_PLATFORM_CERTIFICATE="false"
                     printf '\tpresigned: true,\n'
+#
 # Beginning with Android 14 (U), some presigned apps must be preprocessed too
 # according to this error message:
 #
@@ -514,6 +515,12 @@ function write_blueprint_packages() {
 # This error message occurred with the latest version of AuroraStore:
 # “AuroraStore: Contains compressed JNI libraries”
 # and the build failed!
+#
+# For this, the mentioned app should be marked as "PRESIGNED_PREPROCESSED_SKIP" in
+# fdroid/repo/fdroid.txt:
+#
+# -app/com.aurora.store_56.apk:app/AuroraStore.apk;PRESIGNED_PREPROCESSED_SKIP
+#
 # This error message can be suppressed with this switch:
 # “skip_preprocessed_apk_checks: true”
 #
@@ -533,7 +540,19 @@ function write_blueprint_packages() {
 #
 # Bernhard Thoben 2024-09-28
 #
+# *****
+# 
+# Starting with the latest version of F-Droid there must be a distinction between
+# “only” pre-processed files and an additional check whether a file also contains
+# compressed JNI libraries.
+#
+# Bernhard Thoben 2025-06-12
+#
                 elif [ "$ARG" = "PRESIGNED_PREPROCESSED" ]; then
+                    USE_PLATFORM_CERTIFICATE="false"
+                    printf '\tpreprocessed: true,\n'
+                    printf '\tpresigned: true,\n'
+                elif [ "$ARG" = "PRESIGNED_PREPROCESSED_SKIP" ]; then
                     USE_PLATFORM_CERTIFICATE="false"
                     printf '\tpreprocessed: true,\n'
                     printf '\tpresigned: true,\n'
