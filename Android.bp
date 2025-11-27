@@ -29,26 +29,6 @@ android_app_import {
 }
 
 android_app_import {
-	name: "NominatimNlpBackend",
-	owner: "fdroid",
-	apk: "proprietary/app/NominatimNlpBackend.apk",
-	presigned: true,
-	dex_preopt: {
-		enabled: false,
-	},
-}
-
-android_app_import {
-	name: "UnifiedNlp",
-	owner: "fdroid",
-	apk: "proprietary/app/UnifiedNlp.apk",
-	certificate: "platform",
-	dex_preopt: {
-		enabled: false,
-	},
-}
-
-android_app_import {
 	name: "FDroidPrivilegedExtension",
 	owner: "fdroid",
 	apk: "proprietary/priv-app/FDroidPrivilegedExtension.apk",
