@@ -2,7 +2,3 @@
 -app/org.fdroid.fdroid_1023051.apk:app/F-Droid.apk;PRESIGNED
 -app/com.aurora.store_71.apk:app/AuroraStore.apk;PRESIGNED
 -priv-app/org.fdroid.fdroid.privileged_2130.apk:priv-app/FDroidPrivilegedExtension.apk;PRESIGNED
-
-# UnifiedNlp Backends
--app/org.microg.nlp_20187.apk:app/UnifiedNlp.apk
--app/org.microg.nlp.backend.nominatim_20042.apk:app/NominatimNlpBackend.apk;PRESIGNED
