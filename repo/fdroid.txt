@@ -1,4 +1,4 @@
 # FDroid
--app/org.fdroid.fdroid_2000050.apk:app/F-Droid.apk;PRESIGNED_PREPROCESSED
+-app/org.fdroid.fdroid_2000051.apk:app/F-Droid.apk;PRESIGNED_PREPROCESSED
 -app/com.aurora.store_76.apk:app/AuroraStore.apk;PRESIGNED_PREPROCESSED
 -priv-app/org.fdroid.fdroid.privileged_2130.apk:priv-app/FDroidPrivilegedExtension.apk;PRESIGNED
